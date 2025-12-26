@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page for Kadox Extension</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #667eea;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .test-text {
+            background: white;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            margin: 10px 0;
+        }
+        .test-image {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .test-image img {
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .instruction {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🤖 Kadox Extension Test Page</h1>
+    
+    <div class="instruction">
+        <strong>How to test:</strong>
+        <ol>
+            <li>Make sure the Kadox extension is loaded in Chrome</li>
+            <li>Open Chrome DevTools (F12) and check the Console tab for any errors</li>
+            <li>For text: Highlight any text below, right-click, and select "Analyze AI-Generated Text"</li>
+            <li>For images: Right-click on any image below and select "Analyze AI-Generated Image"</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Text Analysis</h2>
+        <div class="test-text">
+            <p>We introduce Ghostbuster, a state-of-the-art system for detecting AI-generated text. Our method works by passing documents through a series of weaker language models, running a structured search over possible combinations of their features, and then training a classifier on the selected features to predict whether documents are AI-generated.</p>
+        </div>
+        <div class="test-text">
+            <p>This is a simple test paragraph. You can highlight this text and right-click to test the AI detection feature. The extension should show a loading modal and then display the results.</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Image Analysis</h2>
+        <div class="test-image">
+            <img src="https://picsum.photos/400/300" alt="Test Image 1">
+            <p>Right-click on this image to test</p>
+        </div>
+        <div class="test-image">
+            <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=Test+Image" alt="Test Image 2">
+            <p>Right-click on this image to test</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Debug Information</h2>
+        <p>Open the Chrome DevTools Console (F12) to see debug logs from the extension.</p>
+        <p>You should see logs starting with <code>[Kadox]</code> when you use the extension.</p>
+        <p><strong>Check for:</strong></p>
+        <ul>
+            <li>[Kadox] Content script loaded - means the content script is injected</li>
+            <li>[Kadox] Text/Image analysis started - means the context menu was clicked</li>
+            <li>[Kadox] Showing loading modal - means the modal should appear</li>
+            <li>Any error messages in red</li>
+        </ul>
+    </div>
+
+</body>
+</html>

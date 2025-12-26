@@ -1,3 +1,5 @@
+/* Ant Design inspired styles for Kadox AI Detector */
+
 * {
   margin: 0;
   padding: 0;
@@ -5,204 +7,379 @@
 }
 
 body {
-  width: 400px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #333;
-}
-
-.container {
-  background: white;
+  width: 380px;
   min-height: 500px;
-}
-
-.header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-.header h1 {
-  font-size: 24px;
-  margin-bottom: 5px;
-}
-
-.subtitle {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 14px;
-  opacity: 0.9;
+  line-height: 1.5715;
+  color: rgba(0, 0, 0, 0.85);
+  background: #f0f2f5;
 }
 
-.content {
+/* Container */
+.ant-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+  background: #ffffff;
+}
+
+/* Header */
+.ant-header {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  padding: 20px;
+  color: white;
+}
+
+.ant-header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ant-logo-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.ant-header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+.ant-header p {
+  font-size: 12px;
+  margin: 2px 0 0 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Content */
+.ant-content {
+  flex: 1;
+  padding: 16px;
+  background: #f0f2f5;
+  overflow-y: auto;
+}
+
+/* Card */
+.ant-card {
+  background: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+  margin-bottom: 16px;
+}
+
+.ant-card:last-child {
+  margin-bottom: 0;
+}
+
+.ant-card-head {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  min-height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ant-card-head-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.ant-card-body {
   padding: 20px;
 }
 
-.instructions {
-  margin-bottom: 25px;
+/* Steps */
+.ant-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.instructions h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: #667eea;
+.ant-step {
+  display: flex;
+  gap: 12px;
 }
 
-.instructions ol {
-  padding-left: 20px;
+.ant-step-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e6f7ff;
+  border-radius: 50%;
+  color: #1890ff;
 }
 
-.instructions li {
-  margin: 8px 0;
+.ant-step-content {
+  flex: 1;
+}
+
+.ant-step-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.85);
+  margin-bottom: 4px;
+}
+
+.ant-step-description {
   font-size: 13px;
+  color: rgba(0, 0, 0, 0.65);
   line-height: 1.5;
 }
 
-.settings {
-  margin-bottom: 25px;
+/* Statistic */
+.ant-statistic {
+  text-align: center;
 }
 
-.settings h3 {
-  font-size: 16px;
-  margin-bottom: 15px;
-  color: #667eea;
+.ant-statistic-title {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+  margin-bottom: 4px;
 }
 
-.form-group {
-  margin-bottom: 15px;
+.ant-statistic-content {
+  font-size: 24px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.85);
 }
 
-.form-group label {
-  display: block;
-  font-size: 13px;
-  font-weight: 500;
-  margin-bottom: 5px;
-  color: #555;
+/* Button */
+.ant-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 4px 15px;
+  font-size: 14px;
+  border-radius: 2px;
+  border: 1px solid #d9d9d9;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 400;
+  white-space: nowrap;
 }
 
-.form-group input {
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 13px;
-  transition: border-color 0.2s;
+.ant-btn:hover {
+  color: #40a9ff;
+  border-color: #40a9ff;
 }
 
-.form-group input:focus {
-  outline: none;
-  border-color: #667eea;
+.ant-btn:active {
+  color: #096dd9;
+  border-color: #096dd9;
 }
 
-.btn {
-  width: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 6px;
+.ant-btn-primary {
+  background: #1890ff;
+  border-color: #1890ff;
+  color: #ffffff;
+}
+
+.ant-btn-primary:hover {
+  background: #40a9ff;
+  border-color: #40a9ff;
+  color: #ffffff;
+}
+
+.ant-btn-primary:active {
+  background: #096dd9;
+  border-color: #096dd9;
+  color: #ffffff;
+}
+
+/* List */
+.ant-list {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.ant-list-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.ant-list-item:last-child {
+  border-bottom: none;
+}
+
+.ant-list-item-meta {
+  display: flex;
+  gap: 12px;
+}
+
+.ant-list-item-meta-avatar {
+  font-size: 20px;
+}
+
+.ant-list-item-meta-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.ant-list-item-meta-title {
   font-size: 14px;
   font-weight: 500;
-  cursor: pointer;
-  transition: transform 0.2s;
+  color: rgba(0, 0, 0, 0.85);
+  margin-bottom: 2px;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
+.ant-list-item-meta-description {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.45);
 }
 
-.btn:active {
-  transform: translateY(0);
-}
-
-.status {
-  margin-top: 10px;
-  padding: 8px;
-  border-radius: 6px;
-  font-size: 13px;
+/* Empty */
+.ant-empty {
   text-align: center;
-  display: none;
+  padding: 32px 0;
 }
 
-.status.success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-  display: block;
-}
-
-.status.error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-  display: block;
-}
-
-.stats {
-  margin-bottom: 20px;
-}
-
-.stats h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: #667eea;
-}
-
-#recentActivity {
-  background-color: #f8f9fa;
-  padding: 15px;
-  border-radius: 8px;
-  min-height: 80px;
-}
-
-.empty-state {
-  text-align: center;
-  color: #999;
-  font-size: 13px;
-  padding: 20px 0;
-}
-
-.activity-item {
-  padding: 10px;
+.ant-empty-image-svg {
+  height: 41px;
   margin-bottom: 8px;
-  background: white;
-  border-radius: 6px;
-  border-left: 3px solid #667eea;
+  opacity: 0.9;
 }
 
-.activity-item.ai {
-  border-left-color: #ffc107;
+.ant-empty-description {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.45);
+  margin: 8px 0 0 0;
 }
 
-.activity-item.human {
-  border-left-color: #28a745;
-}
-
-.activity-item .type {
-  font-size: 11px;
-  color: #999;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.activity-item .result {
-  font-size: 13px;
-  margin: 5px 0;
-  color: #333;
-}
-
-.activity-item .time {
-  font-size: 11px;
-  color: #999;
-}
-
-.footer {
-  background-color: #f8f9fa;
-  padding: 15px;
+/* Footer */
+.ant-footer {
   text-align: center;
-  border-top: 1px solid #e0e0e0;
+  padding: 16px;
+  background: #fafafa;
+  border-top: 1px solid #f0f0f0;
 }
 
-.footer p {
-  font-size: 11px;
-  color: #666;
+.ant-footer p {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.45);
+  margin: 0;
+}
+
+.ant-footer a {
+  color: #1890ff;
+  text-decoration: none;
+}
+
+.ant-footer a:hover {
+  color: #40a9ff;
+}
+
+/* Badge */
+.ant-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  padding: 0 6px;
+  font-size: 12px;
+  line-height: 20px;
+  border-radius: 10px;
+  background: #f0f0f0;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.ant-badge-success {
+  background: #f6ffed;
+  color: #52c41a;
+  border: 1px solid #b7eb8f;
+}
+
+.ant-badge-warning {
+  background: #fffbe6;
+  color: #faad14;
+  border: 1px solid #ffe58f;
+}
+
+.ant-badge-error {
+  background: #fff2f0;
+  color: #ff4d4f;
+  border: 1px solid #ffccc7;
+}
+
+/* Scrollbar */
+.ant-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ant-list::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+
+.ant-list::-webkit-scrollbar-thumb {
+  background: #bfbfbf;
+  border-radius: 3px;
+}
+
+.ant-list::-webkit-scrollbar-thumb:hover {
+  background: #8c8c8c;
+}
+
+/* Switch */
+.ant-switch-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ant-switch-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ant-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.ant-switch-inner {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2);
+}
+
+.ant-switch-input:checked + .ant-switch {
+  background: #1890ff;
+}
+
+.ant-switch-input:checked + .ant-switch .ant-switch-inner {
+  left: 24px;
+}
+
+.ant-switch-label {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.85);
 }

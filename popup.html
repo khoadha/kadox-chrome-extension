@@ -7,49 +7,116 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>🤖 Kadox AI Detector</h1>
-      <p class="subtitle">Detect AI-generated content</p>
-    </div>
-
-    <div class="content">
-      <div class="instructions">
-        <h3>How to use:</h3>
-        <ol>
-          <li><strong>For Text:</strong> Highlight text on any webpage, right-click, and select "Analyze AI-Generated Text"</li>
-          <li><strong>For Images:</strong> Right-click on any image and select "Analyze AI-Generated Image"</li>
-        </ol>
-      </div>
-
-      <div class="settings">
-        <h3>Settings</h3>
-        <div class="form-group">
-          <label for="apiEndpoint">API Endpoint (Text):</label>
-          <input type="text" id="apiEndpointText" placeholder="https://your-api.com/api/detect/text">
-        </div>
-        <div class="form-group">
-          <label for="apiEndpoint">API Endpoint (Image):</label>
-          <input type="text" id="apiEndpointImage" placeholder="https://your-api.com/api/detect/image">
-        </div>
-        <div class="form-group">
-          <label for="apiKey">API Key (optional):</label>
-          <input type="password" id="apiKey" placeholder="Enter your API key">
-        </div>
-        <button id="saveSettings" class="btn">Save Settings</button>
-        <div id="saveStatus" class="status"></div>
-      </div>
-
-      <div class="stats">
-        <h3>Recent Activity</h3>
-        <div id="recentActivity">
-          <p class="empty-state">No recent analysis</p>
+  <div class="ant-container">
+    <div class="ant-header">
+      <div class="ant-header-logo">
+        <img src="https://blobcuakhoa.blob.core.windows.net/files/black.png" class="ant-logo-image" alt="Kadox Logo">
+        <div>
+          <h1>Kadox AI Detector</h1>
+          <p>Detect AI-generated content instantly</p>
         </div>
       </div>
     </div>
 
-    <div class="footer">
-      <p>Version 1.0.0 | Made with ❤️ by Kadox</p>
+    <div class="ant-content">
+      <div class="ant-card">
+        <div class="ant-card-head">
+          <span class="ant-card-head-title">How to Use</span>
+        </div>
+        <div class="ant-card-body">
+          <div class="ant-steps">
+            <div class="ant-step">
+              <div class="ant-step-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              </div>
+              <div class="ant-step-content">
+                <div class="ant-step-title">Analyze Text</div>
+                <div class="ant-step-description">Highlight text, right-click, and select "Analyze AI-Generated Text"</div>
+              </div>
+            </div>
+            <div class="ant-step">
+              <div class="ant-step-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </div>
+              <div class="ant-step-content">
+                <div class="ant-step-title">Analyze Image</div>
+                <div class="ant-step-description">Right-click on any image and select "Analyze AI-Generated Image"</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ant-card">
+        <div class="ant-card-head">
+          <span class="ant-card-head-title">Account Status</span>
+          <label class="ant-switch-wrapper" id="saveHistoryWrapper" style="display: none;">
+            <input type="checkbox" id="saveHistory" class="ant-switch-input">
+            <span class="ant-switch">
+              <span class="ant-switch-inner"></span>
+            </span>
+            <span class="ant-switch-label">Save to History</span>
+          </label>
+        </div>
+        <div class="ant-card-body">
+          <div class="ant-statistic" id="userStatus">
+            <div class="ant-statistic-title">Account Type</div>
+            <div class="ant-statistic-content" id="accountType">Anonymous</div>
+          </div>
+          <div id="anonymousStats" style="margin-top: 16px;">
+            <div class="ant-statistic">
+              <div class="ant-statistic-title">Text Analysis Today</div>
+              <div class="ant-statistic-content" id="textCount">--</div>
+            </div>
+            <div class="ant-statistic" style="margin-top: 12px;">
+              <div class="ant-statistic-title">Image Analysis Today</div>
+              <div class="ant-statistic-content" id="imageCount">--</div>
+            </div>
+          </div>
+          <button id="loginBtn" class="ant-btn ant-btn-primary" style="margin-top: 16px; width: 100%;">
+            <span>Sign In with User ID</span>
+          </button>
+          <button id="logoutBtn" class="ant-btn" style="margin-top: 8px; width: 100%; display: none;">
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="ant-card">
+        <div class="ant-card-head">
+          <span class="ant-card-head-title">Recent Activity</span>
+        </div>
+        <div class="ant-card-body">
+          <div id="recentActivity" class="ant-list">
+            <div class="ant-empty">
+              <svg class="ant-empty-image-svg" width="64" height="41" viewBox="0 0 64 41">
+                <g transform="translate(0 1)" fill="none" fill-rule="evenodd">
+                  <ellipse fill="#f5f5f5" cx="32" cy="33" rx="32" ry="7"></ellipse>
+                  <g fill-rule="nonzero" stroke="#d9d9d9">
+                    <path d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"></path>
+                    <path d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z" fill="#fafafa"></path>
+                  </g>
+                </g>
+              </svg>
+              <p class="ant-empty-description">No recent analysis</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ant-footer">
+      <p>Kadox AI Detector v1.0.0 | <a href="https://kadox.io.vn" target="_blank">Visit Website</a></p>
     </div>
   </div>
 

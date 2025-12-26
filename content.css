@@ -1,4 +1,4 @@
-/* Kadox AI Content Detector - Content Script Styles */
+/* Kadox AI Content Detector - Content Script Styles (Ant Design) */
 
 .kadox-modal {
   position: fixed;
@@ -6,29 +6,35 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.45);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999999;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  animation: kadoxModalFade 0.2s ease;
+}
+
+@keyframes kadoxModalFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .kadox-modal-content {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-  max-width: 500px;
+  background: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  max-width: 520px;
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
-  animation: kadoxFadeIn 0.3s ease;
+  animation: kadoxSlideDown 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-@keyframes kadoxFadeIn {
+@keyframes kadoxSlideDown {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-48px);
   }
   to {
     opacity: 1;
@@ -37,66 +43,93 @@
 }
 
 .kadox-modal-header {
-  padding: 20px;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #ffffff;
 }
 
 .kadox-modal-header h3 {
   margin: 0;
-  font-size: 20px;
-  color: #333;
-  font-weight: 600;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+  line-height: 22px;
 }
 
 .kadox-close-btn {
   background: none;
   border: none;
-  font-size: 28px;
-  color: #999;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.45);
   cursor: pointer;
   padding: 0;
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transition: all 0.2s;
+  transition: color 0.3s;
+  line-height: 1;
 }
 
 .kadox-close-btn:hover {
-  background-color: #f0f0f0;
-  color: #333;
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .kadox-modal-body {
-  padding: 20px;
+  padding: 24px;
+  font-size: 14px;
+  line-height: 1.5715;
+  color: rgba(0, 0, 0, 0.85);
 }
 
 .kadox-modal-footer {
-  padding: 15px 20px;
-  border-top: 1px solid #e0e0e0;
+  padding: 10px 16px;
+  border-top: 1px solid #f0f0f0;
   display: flex;
   justify-content: flex-end;
+  gap: 8px;
 }
 
 .kadox-btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 4px 15px;
   font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.2s;
+  border-radius: 2px;
+  border: 1px solid #d9d9d9;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1.5715;
+  user-select: none;
 }
 
 .kadox-btn:hover {
-  background-color: #0056b3;
+  color: #40a9ff;
+  border-color: #40a9ff;
+}
+
+.kadox-btn-primary {
+  background: #1890ff;
+  border-color: #1890ff;
+  color: #ffffff;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.016);
+}
+
+.kadox-btn-primary:hover {
+  background: #40a9ff;
+  border-color: #40a9ff;
+  color: #ffffff;
 }
 
 .kadox-loader {
@@ -115,43 +148,46 @@
 }
 
 .kadox-content-preview {
-  background-color: #f8f9fa;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  background-color: #fafafa;
+  padding: 12px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  border: 1px solid #f0f0f0;
 }
 
 .kadox-content-preview strong {
   display: block;
-  margin-bottom: 10px;
-  color: #555;
+  margin-bottom: 8px;
+  color: rgba(0, 0, 0, 0.85);
   font-size: 14px;
+  font-weight: 500;
 }
 
 .kadox-content-preview p {
   margin: 0;
-  color: #666;
+  color: rgba(0, 0, 0, 0.65);
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.5715;
 }
 
 .kadox-result {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  border: 1px solid #d9d9d9;
 }
 
 .kadox-result.ai-detected {
-  background-color: #fff3cd;
-  border: 2px solid #ffc107;
+  background-color: #fffbe6;
+  border-color: #fadb14;
 }
 
 .kadox-result.human-content {
-  background-color: #d4edda;
-  border: 2px solid #28a745;
+  background-color: #f6ffed;
+  border-color: #52c41a;
 }
 
 .kadox-result-icon {
@@ -159,15 +195,17 @@
 }
 
 .kadox-result-text h4 {
-  margin: 0 0 5px 0;
-  font-size: 18px;
-  color: #333;
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
 }
 
 .kadox-result-text p {
-  margin: 5px 0;
-  color: #666;
+  margin: 4px 0;
+  color: rgba(0, 0, 0, 0.65);
   font-size: 14px;
+  line-height: 1.5715;
 }
 
 .kadox-details {
@@ -179,40 +217,148 @@
 
 .kadox-progress-bar {
   width: 100%;
-  height: 10px;
-  background-color: #e0e0e0;
-  border-radius: 5px;
+  height: 8px;
+  background-color: #f5f5f5;
+  border-radius: 100px;
   overflow: hidden;
+  position: relative;
 }
 
 .kadox-progress-fill {
   height: 100%;
-  transition: width 0.5s ease;
+  transition: width 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  border-radius: 100px;
 }
 
 .kadox-progress-fill.ai {
-  background: linear-gradient(90deg, #ffc107, #ff9800);
+  background: #faad14;
 }
 
 .kadox-progress-fill.human {
-  background: linear-gradient(90deg, #28a745, #20c997);
+  background: #52c41a;
 }
 
 .kadox-error {
   text-align: center;
-  padding: 20px;
+  padding: 24px;
 }
 
 .kadox-error p {
-  margin: 10px 0;
-  color: #333;
+  margin: 12px 0;
+  color: rgba(0, 0, 0, 0.85);
 }
 
 .kadox-error-message {
-  color: #dc3545;
+  color: #ff4d4f;
   font-size: 14px;
-  background-color: #f8d7da;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #f5c6cb;
+  background-color: #fff2f0;
+  padding: 12px 16px;
+  border-radius: 2px;
+  border: 1px solid #ffccc7;
+  line-height: 1.5715;
+}
+
+.kadox-remaining {
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.45);
+  font-style: italic;
+}
+
+.kadox-saved-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: #f6ffed;
+  border: 1px solid #b7eb8f;
+  border-radius: 2px;
+  color: #52c41a;
+  font-size: 13px;
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+.kadox-saved-badge svg {
+  flex-shrink: 0;
+}
+
+.kadox-stats {
+  background-color: #fafafa;
+  padding: 12px;
+  border-radius: 2px;
+  margin: 16px 0;
+  border: 1px solid #f0f0f0;
+}
+
+.kadox-stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.kadox-stat-item:last-child {
+  border-bottom: none;
+}
+
+.kadox-stat-label {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+}
+
+.kadox-stat-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.kadox-stat-value.ai {
+  color: #faad14;
+}
+
+.kadox-stat-value.human {
+  color: #52c41a;
+}
+
+.kadox-reasons {
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 2px;
+  margin-top: 16px;
+  border: 1px solid #d9d9d9;
+}
+
+.kadox-reasons strong {
+  display: block;
+  margin-bottom: 12px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.kadox-reasons ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kadox-reasons li {
+  padding: 8px 12px;
+  margin: 8px 0;
+  background-color: #fafafa;
+  border-left: 2px solid #1890ff;
+  border-radius: 2px;
+  font-size: 13px;
+  line-height: 1.5715;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.kadox-reasons li:before {
+  content: "• ";
+  color: #1890ff;
+  font-weight: bold;
+  margin-right: 8px;
 }
