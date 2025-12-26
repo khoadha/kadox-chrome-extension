@@ -1,0 +1,218 @@
+/* Kadox AI Content Detector - Content Script Styles */
+
+.kadox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.kadox-modal-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: kadoxFadeIn 0.3s ease;
+}
+
+@keyframes kadoxFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kadox-modal-header {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kadox-modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+  font-weight: 600;
+}
+
+.kadox-close-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.kadox-close-btn:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.kadox-modal-body {
+  padding: 20px;
+}
+
+.kadox-modal-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.kadox-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.kadox-btn:hover {
+  background-color: #0056b3;
+}
+
+.kadox-loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: kadoxSpin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes kadoxSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.kadox-content-preview {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.kadox-content-preview strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+  font-size: 14px;
+}
+
+.kadox-content-preview p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.kadox-result {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.kadox-result.ai-detected {
+  background-color: #fff3cd;
+  border: 2px solid #ffc107;
+}
+
+.kadox-result.human-content {
+  background-color: #d4edda;
+  border: 2px solid #28a745;
+}
+
+.kadox-result-icon {
+  font-size: 48px;
+}
+
+.kadox-result-text h4 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.kadox-result-text p {
+  margin: 5px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.kadox-details {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #555;
+  font-style: italic;
+}
+
+.kadox-progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.kadox-progress-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.kadox-progress-fill.ai {
+  background: linear-gradient(90deg, #ffc107, #ff9800);
+}
+
+.kadox-progress-fill.human {
+  background: linear-gradient(90deg, #28a745, #20c997);
+}
+
+.kadox-error {
+  text-align: center;
+  padding: 20px;
+}
+
+.kadox-error p {
+  margin: 10px 0;
+  color: #333;
+}
+
+.kadox-error-message {
+  color: #dc3545;
+  font-size: 14px;
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #f5c6cb;
+}

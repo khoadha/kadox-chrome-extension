@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kadox AI Content Detector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🤖 Kadox AI Detector</h1>
+      <p class="subtitle">Detect AI-generated content</p>
+    </div>
+
+    <div class="content">
+      <div class="instructions">
+        <h3>How to use:</h3>
+        <ol>
+          <li><strong>For Text:</strong> Highlight text on any webpage, right-click, and select "Analyze AI-Generated Text"</li>
+          <li><strong>For Images:</strong> Right-click on any image and select "Analyze AI-Generated Image"</li>
+        </ol>
+      </div>
+
+      <div class="settings">
+        <h3>Settings</h3>
+        <div class="form-group">
+          <label for="apiEndpoint">API Endpoint (Text):</label>
+          <input type="text" id="apiEndpointText" placeholder="https://your-api.com/api/detect/text">
+        </div>
+        <div class="form-group">
+          <label for="apiEndpoint">API Endpoint (Image):</label>
+          <input type="text" id="apiEndpointImage" placeholder="https://your-api.com/api/detect/image">
+        </div>
+        <div class="form-group">
+          <label for="apiKey">API Key (optional):</label>
+          <input type="password" id="apiKey" placeholder="Enter your API key">
+        </div>
+        <button id="saveSettings" class="btn">Save Settings</button>
+        <div id="saveStatus" class="status"></div>
+      </div>
+
+      <div class="stats">
+        <h3>Recent Activity</h3>
+        <div id="recentActivity">
+          <p class="empty-state">No recent analysis</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Version 1.0.0 | Made with ❤️ by Kadox</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
