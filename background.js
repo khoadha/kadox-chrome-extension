@@ -208,18 +208,23 @@ async function analyzeTextWithAPI(text) {
   if (!response.ok) {
     let errorMessage = `API Error: ${response.status}`;
     try {
-      const errorData = await response.json();// Extract detailed error message
+      const errorData = await response.json();
+      
+      // Extract detailed error message
       if (errorData.errors?.generalErrors?.[0]) {
         errorMessage = errorData.errors.generalErrors[0];
       } else if (errorData.message) {
         errorMessage = errorData.message;
       }
     } catch (e) {
-      const errorText = await response.text();}
+      const errorText = await response.text();
+    }
     throw new Error(errorMessage);
   }
 
-  const data = await response.json();// Store remaining requests from API response
+  const data = await response.json();
+  
+  // Store remaining requests from API response
   if (data.remainingRequests !== undefined) {
     await chrome.storage.local.set({ 
       textRemainingRequests: data.remainingRequests,
@@ -252,12 +257,17 @@ async function analyzeImageWithAPI(imageUrl) {
     if (!canUse) {
       throw new Error('DAILY_LIMIT_EXCEEDED');
     }
-  }try {
-    // Fetch the image as a blobconst imageResponse = await fetch(imageUrl);
+  }
+  
+  try {
+    // Fetch the image as a blob
+    const imageResponse = await fetch(imageUrl);
     if (!imageResponse.ok) {
       throw new Error('Failed to fetch image');
     }
-    const imageBlob = await imageResponse.blob();// Use extension endpoint if userId exists, otherwise use anonymous endpoint
+    const imageBlob = await imageResponse.blob();
+    
+    // Use extension endpoint if userId exists, otherwise use anonymous endpoint
     const endpoint = userId 
       ? 'https://kadox-server-production.up.railway.app/api/detect/image/extension'
       : 'https://kadox-server-production.up.railway.app/api/detect/image/anonymous';
@@ -287,18 +297,23 @@ async function analyzeImageWithAPI(imageUrl) {
     if (!response.ok) {
       let errorMessage = `API Error: ${response.status}`;
       try {
-        const errorData = await response.json();// Extract detailed error message
+        const errorData = await response.json();
+        
+        // Extract detailed error message
         if (errorData.errors?.generalErrors?.[0]) {
           errorMessage = errorData.errors.generalErrors[0];
         } else if (errorData.message) {
           errorMessage = errorData.message;
         }
       } catch (e) {
-        const errorText = await response.text();}
+        const errorText = await response.text();
+      }
       throw new Error(errorMessage);
     }
 
-    const data = await response.json();// Store remaining requests from API response
+    const data = await response.json();
+    
+    // Store remaining requests from API response
     if (data.remainingRequests !== undefined) {
       await chrome.storage.local.set({ 
         imageRemainingRequests: data.remainingRequests,

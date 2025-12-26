@@ -222,6 +222,9 @@ function showLoginPromptModal(type, customMessage) {removeExistingModal();
         <p style="margin-top: 15px; font-size: 12px; color: #8c8c8c; text-align: center;">
           Don't have a User ID? <a href="https://kadox.io.vn" target="_blank" style="color: #1890ff;">Get one here</a>
         </p>
+        <p style="margin-top: 8px; font-size: 12px; text-align: center;">
+          <a href="#" onclick="kadoxShowUserIdGuide(); return false;" style="color: #1890ff; text-decoration: none;">❓ How to get your User ID?</a>
+        </p>
       </div>
     </div>
   `;
@@ -265,6 +268,76 @@ window.kadoxSubmitUserId = async function() {
     `;
     document.body.appendChild(modal);
   });
+};
+
+// Show User ID guide (called from modal)
+window.kadoxShowUserIdGuide = function() {
+  removeExistingModal();
+  
+  const modal = createModal();
+  modal.innerHTML = `
+    <div class="kadox-modal-content" style="max-width: 600px;">
+      <div class="kadox-modal-header">
+        <h3>📖 How to Get Your User ID</h3>
+        <button class="kadox-close-btn" onclick="this.closest('.kadox-modal').remove()">×</button>
+      </div>
+      <div class="kadox-modal-body" style="padding: 24px;">
+        <div style="background: #f0f2f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+          <h4 style="margin: 0 0 15px 0; font-size: 15px; color: #262626; font-weight: 500;">Follow these steps:</h4>
+          <ol style="margin: 0; padding-left: 20px; line-height: 1.8;">
+            <li style="margin-bottom: 8px;">Create an account at <a href="https://kadox.io.vn" target="_blank" style="color: #1890ff;">kadox.io.vn</a></li>
+            <li style="margin-bottom: 8px;">Log in to your account</li>
+            <li style="margin-bottom: 8px;">Go to: <a href="https://kadox.io.vn/app/profile" target="_blank" style="color: #1890ff;">kadox.io.vn/app/profile</a></li>
+            <li style="margin-bottom: 8px;">Your <strong>User ID</strong> is located below the profile image</li>
+          </ol>
+        </div>
+      </div>
+      <div class="kadox-modal-footer">
+        <button class="kadox-btn" onclick="kadoxBackToLogin()" style="margin-right: 8px;">Back</button>
+        <button class="kadox-btn kadox-btn-primary" onclick="window.open('https://kadox.io.vn/app/profile', '_blank')">Open Profile Page</button>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+};
+
+// Go back to login modal
+window.kadoxBackToLogin = function() {
+  removeExistingModal();
+  
+  const modal = createModal();
+  modal.innerHTML = `
+    <div class="kadox-modal-content" style="max-width: 420px;">
+      <div class="kadox-modal-header">
+        <h3>⚠️ Usage Limit Reached</h3>
+        <button class="kadox-close-btn" onclick="this.closest('.kadox-modal').remove()">×</button>
+      </div>
+      <div class="kadox-modal-body">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <img src="https://blobcuakhoa.blob.core.windows.net/files/black.png" alt="Kadox" style="width: 64px; height: 64px; object-fit: contain; margin-bottom: 16px;">
+        </div>
+        <p style="margin-bottom: 20px; color: #595959;">You've used all your free requests. Please sign in with your User ID to continue using Kadox AI Detector.</p>
+        <div style="margin-bottom: 15px;">
+          <label style="display: block; margin-bottom: 8px; font-weight: 500; color: #262626;">User ID:</label>
+          <input type="text" id="kadox-userId-input" placeholder="Enter your User ID" style="width: 100%; padding: 8px 12px; border: 1px solid #d9d9d9; border-radius: 2px; font-size: 14px;">
+        </div>
+        <button class="kadox-btn kadox-btn-primary" onclick="kadoxSubmitUserId()" style="width: 100%;">Sign In</button>
+        <p style="margin-top: 15px; font-size: 12px; color: #8c8c8c; text-align: center;">
+          Don't have a User ID? <a href="https://kadox.io.vn" target="_blank" style="color: #1890ff;">Get one here</a>
+        </p>
+        <p style="margin-top: 8px; font-size: 12px; text-align: center;">
+          <a href="#" onclick="kadoxShowUserIdGuide(); return false;" style="color: #1890ff; text-decoration: none;">❓ How to get your User ID?</a>
+        </p>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+  
+  setTimeout(() => {
+    document.getElementById('kadox-userId-input')?.focus();
+  }, 100);
 };
 
 // Escape HTML to prevent XSS

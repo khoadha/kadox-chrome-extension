@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Login button
   document.getElementById('loginBtn').addEventListener('click', showLoginPrompt);
   
+  // How to get User ID link
+  document.getElementById('howToGetUserId').addEventListener('click', (e) => {
+    e.preventDefault();
+    showUserIdGuide();
+  });
+  
   // Logout button
   document.getElementById('logoutBtn').addEventListener('click', logout);
   
@@ -209,3 +215,59 @@ chrome.storage.onChanged.addListener((changes, area) => {
     loadRecentActivity();
   }
 });
+
+// Show User ID guide modal
+function showUserIdGuide() {
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'userIdGuideOverlay';
+  overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.45); z-index: 9999; display: flex; align-items: center; justify-content: center;';
+  
+  // Create modal
+  const modal = document.createElement('div');
+  modal.style.cssText = 'background: white; border-radius: 2px; box-shadow: 0 3px 6px -4px rgba(0,0,0,.12); max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto;';
+  
+  modal.innerHTML = `
+    <div style="padding: 16px 24px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <h3 style="margin: 0; font-size: 16px; font-weight: 500;">📖 How to Get Your User ID</h3>
+      <button id="closeGuideBtn" style="background: none; border: none; font-size: 20px; cursor: pointer; color: rgba(0,0,0,0.45);">×</button>
+    </div>
+    <div style="padding: 24px;">
+      <div style="background: #f0f2f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+        <h4 style="margin: 0 0 15px 0; font-size: 15px; color: #262626; font-weight: 500;">Follow these steps:</h4>
+        <ol style="margin: 0; padding-left: 20px; line-height: 1.8;">
+          <li style="margin-bottom: 8px;">Create an account at <a href="https://kadox.io.vn" target="_blank" style="color: #1890ff;">kadox.io.vn</a></li>
+          <li style="margin-bottom: 8px;">Log in to your account</li>
+          <li style="margin-bottom: 8px;">Go to: <a href="https://kadox.io.vn/app/profile" target="_blank" style="color: #1890ff;">kadox.io.vn/app/profile</a></li>
+          <li style="margin-bottom: 8px;">Your <strong>User ID</strong> is located below the profile image</li>
+        </ol>
+      </div>
+      
+    </div>
+    <div style="padding: 10px 16px; border-top: 1px solid #f0f0f0; display: flex; justify-content: flex-end; gap: 8px;">
+      <button id="openProfileBtn" class="ant-btn ant-btn-primary" style="height: 32px; padding: 4px 15px; font-size: 14px; border-radius: 2px; border: 1px solid #1890ff; background: #1890ff; color: white; cursor: pointer;">
+        Open Profile Page
+      </button>
+    </div>
+  `;
+  
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+  
+  // Close button handler
+  document.getElementById('closeGuideBtn').addEventListener('click', () => {
+    overlay.remove();
+  });
+  
+  // Click outside to close
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.remove();
+    }
+  });
+  
+  // Open profile button handler
+  document.getElementById('openProfileBtn').addEventListener('click', () => {
+    window.open('https://kadox.io.vn/app/profile', '_blank');
+  });
+}
